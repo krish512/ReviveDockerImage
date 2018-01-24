@@ -28,6 +28,7 @@ RUN apk --update add \
         php7-iconv \
         php7-phar \
         php7-openssl \
+        php7-zlib \
     && rm -rf /var/cache/apk/*
 
 RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.0.0.tar.gz | tar xz --strip 1 \
