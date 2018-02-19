@@ -3,11 +3,13 @@ MAINTAINER krish512 <krish512@hotmail.com>
 
 WORKDIR /var/www/html
 
-RUN apk update && apk add ca-certificates && update-ca-certificates && apk add openssl
+RUN apk --update upgrade && apk update && apk add curl ca-certificates && update-ca-certificates --fresh && apk add openssl
 
 RUN apk --update add \
-	nginx \
-	gzip \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
+        nginx \
+        gzip \
         php7 \
         php7-dom \
         php7-ctype \
@@ -18,7 +20,7 @@ RUN apk --update add \
         php7-json \
         php7-mbstring \
         php7-mcrypt \
-        php7-mysql \
+        php7-mysqli \
         php7-mysqlnd \
         php7-opcache \
         php7-pdo \
@@ -32,7 +34,7 @@ RUN apk --update add \
         php7-zlib \
     && rm -rf /var/cache/apk/*
 
-RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.0.0.tar.gz | tar xz --strip 1 \
+RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.3.tar.gz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
 
