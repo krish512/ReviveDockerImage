@@ -40,7 +40,7 @@ RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.2.1.tar.gz 
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
-RUN mkdir -p /run/nginx && chown -R nobody:nobody /var/tmp/nginx
+RUN mkdir -p /run/nginx
 
 EXPOSE 80
 
