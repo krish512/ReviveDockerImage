@@ -34,13 +34,13 @@ RUN apk --update add \
         php7-zlib \
     && rm -rf /var/cache/apk/*
 
-RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.1.4.tar.gz | tar xz --strip 1 \
+RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.2.1.tar.gz | tar xz --strip 1 \
     && chown -R nobody:nobody . \
     && rm -rf /var/cache/apk/*
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx && chown -R nobody:nobody /var/tmp/nginx
 
 EXPOSE 80
 
