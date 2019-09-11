@@ -32,6 +32,7 @@ RUN apk --update add \
         php7-phar \
         php7-openssl \
         php7-zlib \
+        php7-zip \
     && rm -rf /var/cache/apk/*
 
 RUN wget -qO- https://download.revive-adserver.com/revive-adserver-4.2.1.tar.gz | tar xz --strip 1 \
